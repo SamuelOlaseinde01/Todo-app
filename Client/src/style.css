@@ -1,0 +1,778 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.user-register-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  border-radius: 10px;
+  align-items: center;
+  padding: 50px;
+  position: relative;
+}
+
+.admin-login-container,
+.user-login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  border-radius: 10px;
+  align-items: center;
+  padding: 100px;
+  position: relative;
+}
+
+.user-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 30px;
+  height: 100vh;
+}
+
+.admin-login,
+.user-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 100vh;
+}
+
+.user-login-container > h1,
+.admin-login-container > h1,
+.user-register-container > h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-login-container > h1::after,
+.admin-login-container > h1::after,
+.user-register-container > h1::after {
+  content: "";
+  display: block;
+  background-color: black;
+  width: 50px;
+  height: 3px;
+}
+
+.user-login-container > .form,
+.admin-login-container > .form,
+.user-register-container > .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+}
+
+.label-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 10px;
+}
+
+.label-container > label {
+  font-weight: 500;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.input-container > input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+}
+
+.input-container > .eye {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+  top: 5px;
+}
+
+.label-container > input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+}
+
+.label-name-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.default-btn {
+  background-color: black;
+  color: white;
+  width: 90%;
+  padding: 15px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.loading-btn {
+  color: white;
+  width: 90%;
+  padding: 15px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 300ms;
+  background-color: rgb(69, 68, 68);
+}
+
+.input-image {
+  padding: 5px 10px 5px 0 !important;
+}
+
+.default-btn:hover {
+  background-color: rgb(69, 68, 68);
+}
+
+.admin-login-container a,
+.user-login-container a,
+.user-register-container a {
+  text-decoration: none;
+  padding-left: 3px;
+  color: grey;
+  transition: 300ms;
+}
+
+.admin-login-container a:hover,
+.user-login-container a:hover,
+.user-register-container a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.lock-icon {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(140, 139, 139);
+  background-color: rgb(64, 64, 64);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  padding: 20px;
+  margin-bottom: 100px;
+  z-index: 1;
+}
+
+.logout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-size: 1em;
+  transition: 300ms;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.task-container {
+  margin-top: 150px;
+}
+
+.task-page {
+  background-color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgb(236, 236, 236);
+}
+
+.task-page > form {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+}
+
+.task-page > form > input {
+  width: 400px;
+  padding: 10px;
+  height: 50px;
+  border: none;
+  background-color: rgb(242, 242, 242);
+}
+
+.create-btn {
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 10px 20px;
+  transition: 300ms;
+}
+
+.create-btn:hover {
+  background-color: rgb(64, 64, 64);
+}
+
+.creating-btn {
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 10px;
+  transition: 300ms;
+  background-color: rgb(64, 64, 64);
+  outline: none;
+}
+
+.tasks {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task {
+  padding: 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgb(236, 236, 236);
+  transition: 300ms;
+  display: flex;
+  color: black;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+
+.task:hover {
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgb(209, 209, 209);
+}
+
+.task-completed {
+  padding: 20px;
+  text-decoration: none;
+  box-shadow: 0px 0px 10px rgb(236, 236, 236);
+  display: flex;
+  color: black;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  opacity: 1;
+}
+
+.task-opacity-container {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  color: black;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  opacity: 0.8;
+}
+
+.task-uncompleted-opacity {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  color: black;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  opacity: 1;
+}
+
+.task > p {
+  font-weight: 500;
+}
+
+.edit-del {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-del > form > button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.task > .delete-loading {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(242, 242, 242);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.task-completed > .delete-loading {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(242, 242, 242);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.task-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.task-name-completed {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: line-through;
+}
+
+.task-name > svg {
+  font-size: 1.1em;
+}
+
+.edit-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 130px;
+  gap: 30px;
+  width: 500px;
+  padding: 30px;
+  box-shadow: 0px 0px 10px rgb(236, 236, 236);
+}
+
+.edit-task-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.task-label-container {
+  display: flex;
+  width: 100%;
+  gap: 100px;
+}
+
+.task-label-container > label {
+  color: rgb(70, 70, 70);
+  font-size: 1.2em;
+}
+
+.task-label-container > p {
+  color: rgb(140, 139, 139);
+}
+
+.task-label-container > .edit-task-name {
+  padding: 10px;
+  background-color: rgb(241, 241, 241);
+  border: none;
+}
+
+.edit-btn {
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding: 15px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.editing-btn {
+  color: white;
+  width: 100%;
+  padding: 15px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 300ms;
+  background-color: rgb(69, 68, 68);
+}
+
+.edit-btn:hover {
+  background-color: rgb(69, 68, 68);
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.back-to-tasks {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-to-tasks > svg {
+  font-size: 1em;
+}
+
+.admin-users {
+  margin-top: 100px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-users > h3 {
+  font-weight: 400;
+}
+
+.users {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.admin-user-box-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  width: 250px;
+  height: 300px;
+  box-shadow: 0px 0px 10px rgb(219, 219, 219);
+  gap: 10px;
+  position: relative;
+}
+
+.admin-user-box-container > h3 {
+  text-transform: capitalize;
+  font-weight: 200;
+}
+
+.admin-user-box-container > a {
+  text-decoration: none;
+  color: blue;
+}
+
+.admin-user-pic {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hamburger {
+  display: block;
+  padding: 5px 10px;
+  height: fit-content;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  transition: 300ms;
+}
+
+.hamburger:hover {
+  background-color: rgb(232, 232, 232);
+  border-radius: 50%;
+}
+
+.span1,
+.span2,
+.span3 {
+  display: block;
+  background-color: black;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+
+.user-delete-view {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-color: white;
+}
+
+.user-delete-view > a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  gap: 3px;
+  color: black;
+  padding: 10px;
+}
+
+.user-delete-view > a:hover {
+  background-color: rgb(232, 232, 232);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.user-delete-view > a > svg {
+  font-size: 1em;
+}
+
+.user-delete-view > form > button > svg {
+  font-size: 1.2em;
+}
+
+.user-delete-view > form > button {
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  border: none;
+  display: flex;
+}
+
+.user-delete-view > form > button:hover {
+  background-color: rgb(232, 232, 232);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.user-delete-view > a > p {
+  font-size: 0.9em;
+  margin-top: -3px;
+}
+
+.user-delete {
+  position: absolute;
+  background-color: rgb(230, 230, 230);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.admin-user-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-user-container > h4 {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.admin-user-container > h3 {
+  font-weight: 450;
+}
+
+.admin-user-container a {
+  text-decoration: none;
+}
+
+.back {
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  color: black;
+}
+
+@media screen and (max-width: 480px) {
+  .admin-login-container,
+  .user-login-container {
+    padding: 0px !important;
+    gap: 30px;
+    position: static;
+    width: 100%;
+  }
+
+  .admin-login,
+  .user-login {
+    height: 90vh;
+  }
+
+  .user-login-container > .form,
+  .admin-login-container > .form,
+  .user-register-container > .form {
+    width: 100%;
+  }
+
+  .user-register-container {
+    box-shadow: none;
+    padding: 0;
+    position: static;
+  }
+
+  .label-name-container {
+    width: 90%;
+  }
+
+  .label-name-container > .label-container {
+    width: 100%;
+  }
+  .Toastify__toast-container {
+    position: fixed !important;
+    top: 1rem !important; /* small space from top */
+    left: auto !important; /* stick to left */
+    right: 20px !important; /* disable right alignment */
+    width: 80vw !important; /* your desired width */
+    padding-left: 1rem !important; /* spacing from the left edge */
+    margin: 0 !important; /* remove default margin */
+    z-index: 9999 !important;
+  }
+
+  .Toastify__toast {
+    width: 100% !important;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .edit-task {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .user-login-container > h1,
+  .admin-login-container > h1,
+  .user-register-container > h1 {
+    font-weight: 400;
+    gap: 5px;
+  }
+  .admin-login-container,
+  .user-login-container {
+    box-shadow: none;
+    padding: 60px;
+  }
+  .user-login-container > .form,
+  .admin-login-container > .form,
+  .user-register-container > .form {
+    width: 100%;
+  }
+
+  .label-name-container {
+    width: 90%;
+  }
+  .label-name-container > .label-container {
+    width: 100%;
+  }
+
+  .user-login-container > h1::after,
+  .admin-login-container > h1::after,
+  .user-register-container > h1::after {
+    height: 3px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .user-register-container {
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .label-name-container {
+    width: 90%;
+  }
+
+  .user-register {
+    padding: 0;
+    margin: 10px;
+    height: 90vh;
+  }
+
+  .label-container > label {
+    font-weight: 400;
+  }
+
+  .label-name-container > .label-container {
+    width: 100%;
+  }
+
+  .task-container {
+    padding: 20px;
+    width: 100%;
+  }
+  .task-page > form {
+    width: 100%;
+  }
+  .task-page > form > input {
+    width: 100%;
+  }
+  .edit-task {
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  header > h2 {
+    font-size: 1.2em;
+  }
+}
