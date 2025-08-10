@@ -10,10 +10,6 @@ export async function loader({ params }) {
   return user.user;
 }
 
-export async function action({ request }) {
-  const formData = request.formData();
-}
-
 export default function User() {
   const user = useLoaderData();
   const name = `${user.firstname} ${user.lastname}`;

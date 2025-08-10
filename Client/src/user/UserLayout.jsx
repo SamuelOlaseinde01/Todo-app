@@ -3,15 +3,13 @@ import { Link, Outlet, useLoaderData, useSearchParams } from "react-router-dom";
 import { PowerSettingsNew } from "@mui/icons-material";
 import { authUser } from "./authUser";
 
-export async function loader({ request }) {
+export async function loader() {
   await authUser();
-  const url = new URL(request.url).pathname;
-  return url;
+  return null;
 }
 
 export default function UserLayout() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const url = useLoaderData();
   const msg = searchParams.get("msg");
 
   function handleClick() {
@@ -23,7 +21,7 @@ export default function UserLayout() {
         <header>
           <h2 style={{ textTransform: "capitalize" }}>Welcome, {msg}</h2>
           <Link
-            to={`/?msg=Logout successful&${url}`}
+            to={`/?msg=Logout successful`}
             onClick={handleClick}
             className="logout-btn"
           >

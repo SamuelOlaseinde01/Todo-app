@@ -25,10 +25,7 @@ export async function action({ request }) {
   };
   try {
     const user = await login(creds);
-    const url =
-      new URL(request.url).searchParams.get("redirectTo") ||
-      `/admin?msg=${user.name}`;
-    console.log(url);
+    const url = `/admin?msg=${user.name}`;
     return redirect(url);
   } catch (err) {
     toast.error(err.message);

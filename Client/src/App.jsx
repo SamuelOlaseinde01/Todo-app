@@ -29,7 +29,7 @@ import Users, {
   loader as usersLoader,
   action as usersAction,
 } from "./admin/Users";
-import User, { loader as userLoader, action as userAction } from "./admin/User";
+import User, { loader as userLoader } from "./admin/User";
 import "./style.css";
 
 export default function App() {
@@ -78,12 +78,7 @@ export default function App() {
             action={usersAction}
             index
           />
-          <Route
-            element={<User />}
-            path=":id"
-            loader={userLoader}
-            action={userAction}
-          />
+          <Route element={<User />} path=":id" loader={userLoader} />
         </Route>
       </Route>
     )
