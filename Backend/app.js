@@ -30,6 +30,10 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/tasks", authMiddleware, taskRouter);
 app.use("/api/v1/admin", adminRouter);
 
+app.get("/ping", (req, res) => {
+  res.status(200).json({ message: "Server is alive" });
+});
+
 app.use(notFound);
 app.use(errorHandlingMiddleware);
 
