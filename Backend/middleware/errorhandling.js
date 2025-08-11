@@ -10,8 +10,9 @@ async function errorHandlingMiddleware(err, req, res, next) {
   };
 
   if (
-    customError.msg ===
-    "User validation failed: password: Path `password` (`123`) is shorter than the minimum allowed length (8)."
+    customError.msg.startsWith(
+      "User validation failed: password: Path `password`"
+    )
   ) {
     customError.msg = "Password must be at least 8 characters long";
     customError.statusCode = StatusCodes.BAD_REQUEST;
