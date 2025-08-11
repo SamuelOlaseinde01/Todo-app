@@ -15,6 +15,9 @@ async function register(req, res) {
     email,
     profileImage,
   });
+  if (!user) {
+    throw new BadRequest("User registration failed");
+  }
   res.status(StatusCodes.CREATED).json({ firstname: user.firstname });
 }
 
