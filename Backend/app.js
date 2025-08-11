@@ -18,7 +18,11 @@ const port = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://todo-app-1-hi1e.onrender.com/",
+      "https://ois-todo-app.netlify.app/",
+    ],
     credentials: true,
   })
 );
