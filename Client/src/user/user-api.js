@@ -4,10 +4,13 @@ function sleep(ms) {
 
 export async function register(formData) {
   await sleep(2000);
-  const res = await fetch("http://localhost:3000/api/v1/auth/register", {
-    method: "POST",
-    body: formData,
-  });
+  const res = await fetch(
+    "https://todo-app-uhrs.onrender.com/api/v1/auth/register",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
   const data = await res.json();
   if (!res.ok) {
     throw new Error(data.msg);
@@ -17,13 +20,16 @@ export async function register(formData) {
 
 export async function login(creds) {
   await sleep(2000);
-  const res = await fetch("http://localhost:3000/api/v1/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(creds),
-  });
+  const res = await fetch(
+    "https://todo-app-uhrs.onrender.com/api/v1/auth/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(creds),
+    }
+  );
   const data = await res.json();
   if (!res.ok) {
     throw new Error(data.msg);

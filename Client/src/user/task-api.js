@@ -4,7 +4,7 @@ function sleep(ms) {
 export async function createTask(name) {
   await sleep(2000);
   const token = localStorage.getItem("token");
-  const res = await fetch("http://localhost:3000/api/v1/tasks", {
+  const res = await fetch("https://todo-app-uhrs.onrender.com/api/v1/tasks", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export async function createTask(name) {
 
 export async function getAllTasks() {
   const token = localStorage.getItem("token");
-  const res = await fetch("http://localhost:3000/api/v1/tasks", {
+  const res = await fetch("https://todo-app-uhrs.onrender.com/api/v1/tasks", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -35,11 +35,14 @@ export async function getAllTasks() {
 
 export async function getTask(id) {
   const token = localStorage.getItem("token");
-  const res = await fetch(`http://localhost:3000/api/v1/tasks/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(
+    `https://todo-app-uhrs.onrender.com/api/v1/tasks/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   const data = await res.json();
   if (!res.ok) {
     throw new Error(data.msg);
@@ -50,14 +53,17 @@ export async function getTask(id) {
 export async function updateTask(task) {
   await sleep(2000);
   const token = localStorage.getItem("token");
-  const res = await fetch(`http://localhost:3000/api/v1/tasks/${task.id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(task),
-  });
+  const res = await fetch(
+    `https://todo-app-uhrs.onrender.com/api/v1/tasks/${task.id}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(task),
+    }
+  );
   const data = await res.json();
   if (!res.ok) {
     throw new Error(data.msg);
@@ -68,12 +74,15 @@ export async function updateTask(task) {
 export async function deleteTask(id) {
   await sleep(2000);
   const token = localStorage.getItem("token");
-  const res = await fetch(`http://localhost:3000/api/v1/tasks/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(
+    `https://todo-app-uhrs.onrender.com/api/v1/tasks/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   const data = await res.json();
   if (!res.ok) {
     throw new Error(data.msg);
