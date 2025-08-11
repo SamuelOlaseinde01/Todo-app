@@ -1,9 +1,4 @@
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 export async function register(formData) {
-  await sleep(1000);
   const res = await fetch(
     "https://todo-app-uhrs.onrender.com/api/v1/auth/register",
     {
@@ -19,7 +14,6 @@ export async function register(formData) {
 }
 
 export async function login(creds) {
-  await sleep(1000);
   const res = await fetch(
     "https://todo-app-uhrs.onrender.com/api/v1/auth/login",
     {
