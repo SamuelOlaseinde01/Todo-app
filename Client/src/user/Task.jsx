@@ -70,10 +70,11 @@ export default function Task() {
       <Form className="edit-task-form" method="post">
         <input type="hidden" value={task._id} name="taskid" />
         <div className="task-label-container">
-          <label htmlFor="">Task name:</label>
+          <label htmlFor="taskname">Task name:</label>
           {isEditing ? (
             <input
               type="text"
+              id="taskname"
               value={value}
               name="taskname"
               onChange={handleChange}
@@ -86,6 +87,7 @@ export default function Task() {
             <input
               type="text"
               value={value}
+              id="taskname"
               name="taskname"
               onClick={handleInputClick}
               className="edit-task-name"
@@ -95,11 +97,11 @@ export default function Task() {
           )}
         </div>
         <div className="task-label-container">
-          <label htmlFor="">Completed:</label>
+          <label htmlFor="completed">Completed:</label>
           <input
             type="checkbox"
             name="completed"
-            id=""
+            id="completed"
             value={checked}
             checked={checked}
             onChange={() => {

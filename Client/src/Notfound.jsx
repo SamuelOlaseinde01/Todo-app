@@ -8,7 +8,7 @@ export default function NotFound() {
     <>
       <div className="notfound-container">
         <div className="notfound">
-          <Error style={{ color: "red", fontSize: "6em" }} />
+          <Error style={{ color: "black", fontSize: "6em" }} />
           <h1>404 Page not found</h1>
           <p>Looks like something is broken. It's not you, it's us.</p>
           <p>How about going back to the home page?</p>
