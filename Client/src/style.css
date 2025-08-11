@@ -675,7 +675,7 @@ input[type="checkbox"] {
   .admin-login-container,
   .user-login-container {
     padding: 0px !important;
-    gap: 30px;
+    gap: 10px;
     position: static;
     width: 100%;
   }
