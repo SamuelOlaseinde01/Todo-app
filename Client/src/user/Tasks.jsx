@@ -47,7 +47,7 @@ export default function Tasks() {
   const tasks = useLoaderData();
   const navigation = useNavigation();
   const [randTask, setRandTask] = React.useState();
-  const [deletingTaskId, setDeletingTaskId] = React.useState(null);
+  const [deletingTaskIds, setDeletingTaskIds] = React.useState([]);
 
   React.useEffect(() => {
     if (
@@ -55,10 +55,11 @@ export default function Tasks() {
       navigation.formData.get("_action") === "delete"
     ) {
       const taskId = navigation.formData.get("id");
-      setDeletingTaskId(taskId);
+
+      setDeletingTaskIds((prev) => [...new Set([...prev, taskId])]);
 
       const timer = setTimeout(() => {
-        setDeletingTaskId(null);
+        setDeletingTaskIds((prev) => prev.filter((id) => id !== taskId));
       }, 3000);
 
       return () => clearTimeout(timer);
@@ -96,7 +97,7 @@ export default function Tasks() {
   }, []);
 
   const mappedTasks = tasks.tasks.map((task) => {
-    const isDeleting = deletingTaskId === task._id;
+    const isDeleting = deletingTaskIds.includes(task._id);
     return (
       <div
         className={task.completed ? "task-completed" : "task"}

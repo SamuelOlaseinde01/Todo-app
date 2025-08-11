@@ -261,8 +261,7 @@ header {
   border: none;
   cursor: pointer;
   color: white;
-  padding: 10px;
-  transition: 300ms;
+  padding: 10px 20px;
   background-color: rgb(64, 64, 64);
   outline: none;
 }

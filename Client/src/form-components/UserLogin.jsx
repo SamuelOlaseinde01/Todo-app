@@ -12,7 +12,7 @@ import { Visibility, VisibilityOff, Lock } from "@mui/icons-material";
 
 export async function loader({ request }) {
   const msg = new URL(request.url).searchParams.get("msg");
-  return msg; // pass message up to component
+  return msg;
 }
 
 export async function action({ request }) {
@@ -35,7 +35,7 @@ export default function UserLogin() {
   const msg = useLoaderData();
   const [type, setType] = React.useState("password");
   const [visibility, setVisibility] = React.useState(false);
-  const hasToasted = React.useRef(false); // prevent multiple toasts
+  const hasToasted = React.useRef(false);
 
   React.useEffect(() => {
     if (msg === "Logout successful" && !hasToasted.current) {
