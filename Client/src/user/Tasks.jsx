@@ -72,12 +72,10 @@ export default function Tasks() {
   const tasksPlaceholder = [
     "wake up at 6:30 AM",
     "workout for 30 minutes",
-    "read chapter 4 of biology textbook",
     "finish frontend bug fix",
     "clean the kitchen",
     "buy groceries",
     "respond to team emails",
-    "practice 5 coding problems on LeetCode",
     "watch a TED Talk",
     "book dentist appointment",
     "take out the trash",

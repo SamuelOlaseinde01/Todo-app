@@ -2,7 +2,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 export async function createTask(name) {
-  await sleep(2000);
+  await sleep(1000);
   const token = localStorage.getItem("token");
   const res = await fetch("https://todo-app-uhrs.onrender.com/api/v1/tasks", {
     method: "POST",
@@ -51,7 +51,7 @@ export async function getTask(id) {
 }
 
 export async function updateTask(task) {
-  await sleep(2000);
+  await sleep(1000);
   const token = localStorage.getItem("token");
   const res = await fetch(
     `https://todo-app-uhrs.onrender.com/api/v1/tasks/${task.id}`,
@@ -72,7 +72,7 @@ export async function updateTask(task) {
 }
 
 export async function deleteTask(id) {
-  await sleep(2000);
+  await sleep(1000);
   const token = localStorage.getItem("token");
   const res = await fetch(
     `https://todo-app-uhrs.onrender.com/api/v1/tasks/${id}`,

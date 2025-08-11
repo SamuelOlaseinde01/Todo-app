@@ -30,6 +30,7 @@ import Users, {
   action as usersAction,
 } from "./admin/Users";
 import User, { loader as userLoader } from "./admin/User";
+import NotFound from "./Notfound";
 import "./style.css";
 
 export default function App() {
@@ -80,6 +81,7 @@ export default function App() {
           />
           <Route element={<User />} path=":id" loader={userLoader} />
         </Route>
+        <Route element={<NotFound />} path="*" />
       </Route>
     )
   );

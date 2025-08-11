@@ -3,7 +3,7 @@ function sleep(ms) {
 }
 
 export async function login(creds) {
-  await sleep(2000);
+  await sleep(1000);
   const res = await fetch(
     "https://todo-app-uhrs.onrender.com/api/v1/admin/login",
     {
@@ -54,7 +54,7 @@ export async function getUser(id) {
 }
 
 export async function deleteUser(id) {
-  await sleep(2000);
+  await sleep(1000);
   const adminToken = localStorage.getItem("adminToken");
   const res = await fetch(
     `https://todo-app-uhrs.onrender.com/api/v1/admin/${id}`,
