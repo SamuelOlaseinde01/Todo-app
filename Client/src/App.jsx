@@ -32,6 +32,7 @@ import Users, {
 import User, { loader as userLoader } from "./admin/User";
 import NotFound from "./Notfound";
 import "./style.css";
+import TaskError from "./user/TaskError";
 
 export default function App() {
   const router = createBrowserRouter(
@@ -66,6 +67,7 @@ export default function App() {
             path=":id"
             loader={taskLoader}
             action={taskAction}
+            errorElement={<TaskError />}
           />
         </Route>
         <Route

@@ -14,8 +14,12 @@ import { authUser } from "./authUser";
 export async function loader({ params }) {
   await authUser();
   const id = params.id;
-  const task = await getTask(id);
-  return task;
+  try {
+    const task = await getTask(id);
+    return task;
+  } catch (err) {
+    throw new Response(err.msg, { status: 500 });
+  }
 }
 
 export async function action({ request }) {
@@ -47,7 +51,7 @@ export async function action({ request }) {
 export default function Task() {
   const obj = useLoaderData();
   const navigation = useNavigation();
-  const task = obj.task;
+  const task = obj?.task;
   const [isEditing, setIsEditing] = React.useState(false);
   const [checked, setChecked] = React.useState(false);
   const [value, setValue] = React.useState(task.name);
@@ -117,7 +121,7 @@ export default function Task() {
           {navigation.state === "submitting" ? "Editing task..." : "Edit task"}
         </button>
       </Form>
-      <Link to={`/user?msg=${obj.name}`} className="back-to-tasks">
+      <Link to={`/user?msg=${obj?.name}`} className="back-to-tasks">
         <ArrowBack /> Back to Tasks
       </Link>
     </div>

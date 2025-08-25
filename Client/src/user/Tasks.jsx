@@ -5,15 +5,18 @@ import { toast } from "react-toastify";
 import {
   Delete,
   EditNote,
-  CheckBoxRounded,
   RadioButtonCheckedRounded,
 } from "@mui/icons-material";
 import { authUser } from "./authUser";
 
 export async function loader() {
   await authUser();
-  const tasks = await getAllTasks();
-  return tasks;
+  try {
+    const tasks = await getAllTasks();
+    return tasks;
+  } catch (err) {
+    toast.error(err.message);
+  }
 }
 
 export async function action({ request }) {
