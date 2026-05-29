@@ -21,7 +21,7 @@ export default function UserLayout() {
         <header>
           <h2 style={{ textTransform: "capitalize" }}>Welcome, {msg}</h2>
           <Link
-            to={`/?msg=Logout successful`}
+            to={`/login?msg=Logout successful`}
             onClick={handleClick}
             className="logout-btn"
           >

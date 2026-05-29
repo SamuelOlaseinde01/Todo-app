@@ -40,7 +40,7 @@ export default function App() {
       <Route>
         <Route
           element={<UserLogin />}
-          path="/"
+          path="/login"
           action={userLoginAction}
           loader={userLoginLoader}
         />
@@ -55,7 +55,7 @@ export default function App() {
           action={adminLoginAction}
           loader={adminLoginLoader}
         />
-        <Route element={<UserLayout />} path="/user" loader={userLayoutLoader}>
+        <Route element={<UserLayout />} path="/" loader={userLayoutLoader}>
           <Route
             element={<Tasks />}
             index

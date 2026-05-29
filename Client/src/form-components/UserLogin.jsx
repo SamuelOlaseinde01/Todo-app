@@ -23,7 +23,7 @@ export async function action({ request }) {
 
   try {
     const user = await login(creds);
-    return redirect(`/user?msg=${user.name}`);
+    return redirect(`/?msg=${user.name}`);
   } catch (err) {
     toast.error(err.message || "Login failed");
     return null;
