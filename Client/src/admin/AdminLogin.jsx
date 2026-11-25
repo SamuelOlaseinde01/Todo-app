@@ -65,7 +65,7 @@ export default function AdminLogin() {
       <div className="admin-login">
         <div className="admin-login-container">
           <h1>Admin Login</h1>
-          <Link to={"/"} className="lock-icon">
+          <Link to={"/login"} className="lock-icon">
             <Person />
           </Link>
           <Form method="post" className="form">
