@@ -12,20 +12,20 @@ export async function loader({ params }) {
 
 export default function User() {
   const user = useLoaderData();
-  const name = `${user.firstname} ${user.lastname}`;
+  const name = `${user?.firstname} ${user?.lastname}`;
   return (
     <>
       <div className="admin-user-container">
         <img
-          src={user.profileImage || "/images/profile-user.png"}
+          src={user?.profileImage || "/images/profile-user.png"}
           className="admin-user-pic"
           alt=""
           srcset=""
         />
-        <h4>_id: {user._id}</h4>
+        <h4>_id: {user?._id}</h4>
         <h3>Name: {name}</h3>
         <h3>
-          Email: <a href={`mailto:${user.email}`}>{user.email}</a>
+          Email: <a href={`mailto:${user?.email}`}>{user?.email}</a>
         </h3>
         <h3>
           Created on:{" "}
@@ -36,7 +36,7 @@ export default function User() {
             hour: "numeric",
             minute: "2-digit",
             hour12: true,
-          }).format(new Date(user.createdAt))}
+          }).format(new Date(user?.createdAt))}
         </h3>
       </div>
       <Link to={"/admin?msg=admin"} className="back">

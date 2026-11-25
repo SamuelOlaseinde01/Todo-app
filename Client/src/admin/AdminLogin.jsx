@@ -25,7 +25,7 @@ export async function action({ request }) {
   };
   try {
     const user = await login(creds);
-    const url = `/admin?msg=${user.name}`;
+    const url = `/admin?msg=${user?.name}`;
     return redirect(url);
   } catch (err) {
     toast.error(err.message);
