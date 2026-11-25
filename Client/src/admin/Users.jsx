@@ -26,13 +26,13 @@ export async function action({ request }) {
 
 export default function Users() {
   const usersObj = useLoaderData();
-  const users = usersObj.users;
+  const users = usersObj?.users;
   const [activeUserId, setActiveUserId] = React.useState(null);
   const [activeId, setActiveId] = React.useState(null);
   const dropdownRef = React.useRef(null);
   const hamburgerRef = React.useRef(null);
 
-  const usersLength = usersObj.usersLength;
+  const usersLength = usersObj?.usersLength;
 
   React.useEffect(() => {
     function handleClickOutside(event) {
@@ -61,24 +61,24 @@ export default function Users() {
   }
 
   const mappedUsers = users.map((user) => {
-    const isOpen = activeUserId === user._id;
-    const isDeleting = activeId === user._id;
-    const name = `${user.firstname} ${user.lastname}`;
+    const isOpen = activeUserId === user?._id;
+    const isDeleting = activeId === user?._id;
+    const name = `${user?.firstname} ${user?.lastname}`;
 
     return (
-      <div className="admin-user-box-container" key={user._id}>
+      <div className="admin-user-box-container" key={user?._id}>
         <img
-          src={user.profileImage || "/images/profile-user.png"}
+          src={user?.profileImage || "/images/profile-user.png"}
           className="admin-user-pic"
           alt="user-image"
         />
         <h3>{name}</h3>
-        <a href={`mailto:${user.email}`}>{user.email}</a>
+        <a href={`mailto:${user?.email}`}>{user?.email}</a>
         <div className=""></div>
         <div
           className="hamburger"
           ref={isOpen ? hamburgerRef : null}
-          onClick={() => handleClick(user._id)}
+          onClick={() => handleClick(user?._id)}
         >
           <span className="span1"></span>
           <span className="span2"></span>
@@ -91,12 +91,12 @@ export default function Users() {
         )}
         {isOpen && !isDeleting && (
           <div className="user-delete-view" ref={dropdownRef}>
-            <Link to={`/admin/${user._id}?msg=${usersObj.adminName}`}>
+            <Link to={`/admin/${user?._id}?msg=${usersObj?.adminName}`}>
               <Visibility />
               <p>View</p>
             </Link>
-            <Form method="post" onSubmit={() => deleting(user._id)}>
-              <input type="hidden" name="id" value={user._id} />
+            <Form method="post" onSubmit={() => deleting(user?._id)}>
+              <input type="hidden" name="id" value={user?._id} />
               <button>
                 <Delete />
                 <p>Delete</p>
@@ -111,7 +111,7 @@ export default function Users() {
   return (
     <>
       <div className="admin-users">
-        {usersLength > 0 && <h3>Users: {usersObj.usersLength}</h3>}
+        {usersLength > 0 && <h3>Users: {usersObj?.usersLength}</h3>}
         {usersLength > 0 ? (
           <div className="users">{mappedUsers}</div>
         ) : (
