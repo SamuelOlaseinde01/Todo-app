@@ -24,8 +24,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "You must provide an email"],
       unique: true,
+      trim: true,
+      lowercase: true,
       match: [
-        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/,
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
         "Invalid email",
       ],
     },
@@ -36,35 +38,30 @@ const UserSchema = new mongoose.Schema(
     },
     profileImage: {
       type: String,
+      default: "",
     },
   },
   { timestamps: true }
 );
 
-UserSchema.pre("save", async function (next) {
-  try {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (err) {
-    next(err);
-  }
+UserSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 UserSchema.methods.createToken = function () {
-  const token = jwt.sign(
+  return jwt.sign(
     { userId: this._id, name: this.firstname },
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_LIFETIME,
     }
   );
-  return token;
 };
 
-UserSchema.methods.comparePassword = async function (password) {
-  const isMatch = await bcrypt.compare(password, this.password);
-  return isMatch;
+UserSchema.methods.comparePassword = async function (candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
 };
 
 module.exports = mongoose.model("User", UserSchema);
