@@ -16,6 +16,7 @@ export async function loader() {
     return tasks;
   } catch (err) {
     toast.error(err.message);
+    return { tasks: [], name: "" };
   }
 }
 
@@ -119,7 +120,7 @@ export default function Tasks() {
           </div>
           <div className="edit-del">
             <Link
-              to={`/user/${task._id}?msg=${tasks.name}`}
+              to={`/${task._id}?msg=${tasks.name}`}
               style={{ color: "black" }}
             >
               <EditNote />

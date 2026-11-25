@@ -41,7 +41,7 @@ export async function action({ request }) {
   try {
     const name = await updateTask(task);
     console.log(name);
-    return redirect(`/user?msg=${name}`);
+    return redirect(`/?msg=${name}`);
   } catch (error) {
     toast.error(error.message);
     return null;
@@ -121,7 +121,7 @@ export default function Task() {
           {navigation.state === "submitting" ? "Editing task..." : "Edit task"}
         </button>
       </Form>
-      <Link to={`/user?msg=${obj?.name}`} className="back-to-tasks">
+      <Link to={`/?msg=${obj?.name}`} className="back-to-tasks">
         <ArrowBack /> Back to Tasks
       </Link>
     </div>
