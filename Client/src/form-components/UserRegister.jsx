@@ -20,7 +20,7 @@ export async function action({ request }) {
   try {
     await register(formData);
     toast.success("Registration successful!");
-    return redirect("/");
+    return redirect("/login");
   } catch (err) {
     toast.error(err.message);
     return null;
@@ -145,7 +145,7 @@ export default function UserRegister() {
               {navigation.state === "submitting" ? "Signing up..." : "Sign up"}
             </button>
             <p>
-              Already have an account?<Link to={"/"}>Sign in</Link>
+              Already have an account?<Link to={"/login"}>Sign in</Link>
             </p>
           </Form>
         </div>
