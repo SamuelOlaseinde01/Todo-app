@@ -34,59 +34,60 @@ import NotFound from "./Notfound";
 import "./style.css";
 import TaskError from "./user/TaskError";
 
-export default function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route>
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+      <Route
+        element={<UserLogin />}
+        path="/login"
+        action={userLoginAction}
+        loader={userLoginLoader}
+      />
+      <Route
+        element={<UserRegister />}
+        path="/register"
+        action={userRegisterAction}
+      />
+      <Route
+        element={<AdminLogin />}
+        path="/adminlogin"
+        action={adminLoginAction}
+        loader={adminLoginLoader}
+      />
+      <Route element={<UserLayout />} path="/" loader={userLayoutLoader}>
         <Route
-          element={<UserLogin />}
-          path="/login"
-          action={userLoginAction}
-          loader={userLoginLoader}
+          element={<Tasks />}
+          index
+          loader={tasksLoader}
+          action={tasksAction}
         />
         <Route
-          element={<UserRegister />}
-          path="/register"
-          action={userRegisterAction}
+          element={<Task />}
+          path=":id"
+          loader={taskLoader}
+          action={taskAction}
+          errorElement={<TaskError />}
         />
-        <Route
-          element={<AdminLogin />}
-          path="/adminlogin"
-          action={adminLoginAction}
-          loader={adminLoginLoader}
-        />
-        <Route element={<UserLayout />} path="/" loader={userLayoutLoader}>
-          <Route
-            element={<Tasks />}
-            index
-            loader={tasksLoader}
-            action={tasksAction}
-          />
-          <Route
-            element={<Task />}
-            path=":id"
-            loader={taskLoader}
-            action={taskAction}
-            errorElement={<TaskError />}
-          />
-        </Route>
-        <Route
-          element={<AdminLayout />}
-          path="/admin"
-          loader={adminLayoutLoader}
-        >
-          <Route
-            element={<Users />}
-            loader={usersLoader}
-            action={usersAction}
-            index
-          />
-          <Route element={<User />} path=":id" loader={userLoader} />
-        </Route>
-        <Route element={<NotFound />} path="*" />
       </Route>
-    )
-  );
+      <Route
+        element={<AdminLayout />}
+        path="/admin"
+        loader={adminLayoutLoader}
+      >
+        <Route
+          element={<Users />}
+          loader={usersLoader}
+          action={usersAction}
+          index
+        />
+        <Route element={<User />} path=":id" loader={userLoader} />
+      </Route>
+      <Route element={<NotFound />} path="*" />
+    </Route>
+  )
+);
+
+export default function App() {
   return (
     <>
       <RouterProvider router={router} />
